@@ -1,4 +1,6 @@
 // Update with your config settings.
+//dbConnection variable allows you to connect to heroku posgress db in production
+const dbConnection = process.env.DATABASE_URL
 
 module.exports = {
   development: {
@@ -27,4 +29,16 @@ module.exports = {
       directory: './data/seeds',
     },
   },
+
+production: {
+  client: 'pg',
+  connection: dbConnection, 
+  migrations: {
+    directory: './data/migrations',
+  },
+  seeds: {
+    directory: './data/seeds',
+  },
+
+}
 };
